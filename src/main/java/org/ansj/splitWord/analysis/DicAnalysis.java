@@ -6,7 +6,6 @@ import org.ansj.domain.TermNature;
 import org.ansj.domain.TermNatures;
 import org.ansj.recognition.arrimpl.NumRecognition;
 import org.ansj.recognition.arrimpl.PersonRecognition;
-import org.ansj.recognition.arrimpl.UserDefineRecognition;
 import org.ansj.splitWord.Analysis;
 import org.ansj.util.AnsjReader;
 import org.ansj.util.Graph;
@@ -72,7 +71,7 @@ public class DicAnalysis extends Analysis {
 					GetWord word = forest.getWord(graph.chars);
 					String temp = null;
 					int tempFreq = 50;
-					while ((temp = word.getAllWords()) != null) {
+					while ((temp = word.getFrontWords()) != null) {
 						Term tempTerm = graph.terms[word.offe];
 						tempFreq = getInt(word.getParam()[1], 50);
 						if (graph.terms[word.offe] != null && graph.terms[word.offe].getName().equals(temp)) {
