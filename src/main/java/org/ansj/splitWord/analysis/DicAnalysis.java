@@ -71,7 +71,7 @@ public class DicAnalysis extends Analysis {
 					GetWord word = forest.getWord(graph.chars);
 					String temp = null;
 					int tempFreq = 50;
-					while ((temp = word.getFrontWords()) != null) {
+					while ((temp = word.getAllWords()) != null) {
 						Term tempTerm = graph.terms[word.offe];
 						tempFreq = getInt(word.getParam()[1], 50);
 						if (graph.terms[word.offe] != null && graph.terms[word.offe].getName().equals(temp)) {

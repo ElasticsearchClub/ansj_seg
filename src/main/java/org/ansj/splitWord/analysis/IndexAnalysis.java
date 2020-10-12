@@ -74,7 +74,7 @@ public class IndexAnalysis extends Analysis {
                     GetWord word = forest.getWord(graph.chars);
                     String temp = null;
                     int tempFreq = 50;
-                    while ((temp = word.getFrontWords()) != null) {
+                    while ((temp = word.getAllWords()) != null) {
                         Term tempTerm = graph.terms[word.offe];
                         tempFreq = getInt(word.getParam()[1], 50);
                         if (graph.terms[word.offe] != null && graph.terms[word.offe].getName().equals(temp)) {
@@ -87,7 +87,6 @@ public class IndexAnalysis extends Analysis {
                         }
                     }
                 }
-
                 graph.rmLittlePath();
                 graph.walkPathByScore();
                 graph.rmLittlePath();
@@ -135,7 +134,7 @@ public class IndexAnalysis extends Analysis {
                             String pos = term.getNatureStr();
                             GetWord word = forest.getWord(name);
                             while ((temp = word.getAllWords()) != null) {
-                                if (StringUtil.isBlank(temp)) {
+                                if (StringUtil.isBlank(temp) || temp.length() < 1) {
                                     continue;
                                 }
                                 // 针对于中国行政区划词，只保留完整名称与删除后缀的词语。
